@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'page#index'
 
+  # admin后台管理员的路由
   get '/admin' => 'admins#index'
 
   get '/admin/login' => 'admins#login', :as => 'admin_login'
@@ -16,9 +17,14 @@ Rails.application.routes.draw do
 
   resource :admins, only: [:update]
 
+
+  # 用户的路由
   get '/login' => 'users#login', :as => 'login'
+
   get '/signup' => 'users#signup', :as => 'signup'
+
   post '/create_login_session' => 'users#create_login_session'
+
   get '/logout' => 'users#logout', :as => 'logout'
 
   resource :users, only: [:create, :update]
