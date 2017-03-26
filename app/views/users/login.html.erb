@@ -1,0 +1,7 @@
+<%= form_tag '/create_login_session' do %>
+    <%= label_tag '用戶名'%>
+    <%= text_field_tag :name, params[:name] %>
+    <%= label_tag '密碼'%>
+    <%= password_field_tag :password, params[:password] %>
+    <%= submit_tag '登錄'%>
+<% end %>

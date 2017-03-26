@@ -1,0 +1,28 @@
+<h1>修改信息</h1>
+
+<%= form_for :admin, url: admins_path(@admin), method: :patch do |f| %>
+
+    <p>
+      <%= f.label :账号 %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :姓名 %><br>
+      <%= f.text_field :nick_name %>
+    </p>
+
+    <p>
+      <%= f.label :电子邮箱 %><br>
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :密码 %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.submit '保存' %>
+    </p>
+<% end %>
