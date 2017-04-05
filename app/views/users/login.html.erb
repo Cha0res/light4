@@ -1,7 +1,26 @@
-<%= form_tag '/create_login_session' do %>
-    <%= label_tag '用戶名'%>
-    <%= text_field_tag :name, params[:name] %>
-    <%= label_tag '密碼'%>
-    <%= password_field_tag :password, params[:password] %>
-    <%= submit_tag '登錄'%>
+
+<%= form_tag '/create_login_session', class:'layui-form' do %>
+    <div class="layui-form-item">
+      <label class="layui-form-label">账号</label>
+      <div class="layui-input-inline">
+        <%= text_field_tag :name, params[:name], class:'layui-input', placeholder:'请输入账号' %>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">密碼</label>
+      <div class="layui-input-inline">
+        <%= password_field_tag :password, params[:password], class:'layui-input', placeholder:'请输入密码' %>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <%= submit_tag '登錄', class:'layui-btn'%>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+
 <% end %>
+
+<script>
+    layui.use('form');
+</script>
