@@ -1,7 +1,35 @@
-<%= form_tag '/admin/create_login_session' do %>
-  <%= label_tag '用戶名'%>
-  <%= text_field_tag :name, params[:name] %>
-  <%= label_tag '密碼'%>
-  <%= password_field_tag :password, params[:password] %>
-    <%= submit_tag '登錄'%>
-<% end %>
+  <div class="middle_area">
+    <div class="left_area">
+      <%= image_tag "login/tupian390-510.png", class: "just_a_pic" %>
+    </div>
+    <div class="right_area">
+      <div class="dashed_box">
+        <%= form_tag '/admin/create_login_session', class:'layui-form layui-form-pane' do %>
+            <div class="layui-form-item">
+              <label class="layui-form-label"><%= image_tag "login/shouji20-20-.png" %></label>
+              <div class="layui-input-inline">
+                <%= text_field_tag :name, params[:name], class:'layui-input', placeholder:'请输入账号' %>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label"><%= image_tag "login/mima20-20.png" %></label>
+              <div class="layui-input-inline">
+                <%= password_field_tag :password, params[:password], class:'layui-input', placeholder:'请输入密码' %>
+              </div>
+            </div>
+            <div class="forget_pass">
+              <a href="javascript:;">忘記密碼？</a>
+            </div>
+            <div class="layui-form-item">
+                <%= submit_tag '登錄', class:'layui-btn'%>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+    layui.use('form');
+</script>

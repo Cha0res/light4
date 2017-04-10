@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/admin/login' => 'admins#login', :as => 'admin_login'
 
+  get '/admin/welcome' => 'admins#welcome', :as => 'admin_welcome'
+
   get '/admin/main' => 'admins#main', :as => 'admin_main'
 
   get '/admin/edit' => 'admins#edit', :as => 'admin_edit'

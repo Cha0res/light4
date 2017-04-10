@@ -1,0 +1,120 @@
+.whole_view{
+  display:flex;
+  .left_view{
+    flex:none;
+    width: 200px;
+    height: 100%;
+
+    background: image_url("admins/zuocetupian-300-1080-.png") no-repeat;
+    background-size:100%;
+    //background-color: #BBA16B;
+    .top_box{
+      position:relative;
+      height: 200px;
+      .admin_info{
+        text-align: center;
+        width:140px;
+        height: 140px;
+        position:absolute;
+        top: 26px;
+        left: 20px;
+        .avatar_box{
+          border-radius: 50%;
+          background-color: #fff;
+          width: 80px;
+          height: 80px;
+          margin: 0 auto;
+          position: relative;
+          .avatar_back{
+            cursor: pointer;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 68px;
+            height: 68px;
+            line-height: 68px;
+            border-radius: 50%;
+            background-color: #000;
+            .avatar{
+              width: 34px;
+            }
+          }
+        }
+        .info_area{
+          margin-top: 10px;
+          color:#fff;
+          font-size: 12px;
+        }
+      }
+      .horizontal_line{
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+      }
+      .vertical_line{
+        width: 1px;
+        height: 170px;
+        position: absolute;
+        bottom: 0;
+        right: 30px;
+      }
+    }
+    .menu_area{
+
+      .menu_list{
+        float:right;
+      }
+    }
+
+  }
+
+  .right_view{
+    flex:1;
+    position: relative;
+    .top_button_area{
+      width: 100%;
+      height: 50px;
+      border-bottom:1px solid #DBDBDB;
+      position:relative;
+      .tab_title{
+        position: absolute;
+        left: 32px;
+        top: 14px;
+        font-size: 20px;
+        color: #999;
+        width: 80%;
+        overflow: hidden;
+      }
+      .exit_button{
+        position: absolute;
+        right: 8px;
+        bottom: 10px;
+        width: 24px;
+        float: right;
+      }
+    }
+    .show_box{
+      width: 100%;
+      background-color: #F7F7F7;
+      position: absolute;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      .show_area{
+        position: absolute;
+        left: 3%;
+        top: 3%;
+        width: 94%;
+        height: 94%;
+        background-color: #FFF;
+        .iframe_area{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+  }
+}

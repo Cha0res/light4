@@ -7,6 +7,9 @@ class AdminsController < ApplicationController
     end
   end
 
+  def welcome
+  end
+
   def login
   end
 
@@ -36,10 +39,12 @@ class AdminsController < ApplicationController
     @admin = current_admin
 
     if @admin.update(admin_params)
-      redirect_to :admin_main
+
     else
-      redirect_to :admin_edit
+
     end
+
+    redirect_to :admin_edit
   end
 
   private

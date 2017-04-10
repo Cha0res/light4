@@ -1,6 +1,89 @@
-<% if current_admin%>
-  <h1><%= link_to current_admin.nick_name, admin_edit_path%></h1>
-  <h1><%= link_to '注销', admin_logout_path%></h1>
-<% else %>
-  <h1><%= link_to '登录超时，请重新登录',  admin_login_path %></h1>
-<% end %>
+  <div class="left_view">
+    <div class="top_box">
+      <div class="admin_info">
+        <div class="avatar_box">
+          <div class="avatar_back">
+            <%= image_tag "admins/logo46-46.png", class: "avatar"%>
+          </div>
+        </div>
+        <div class="info_area">
+          <%= current_admin.nick_name%>&nbsp;|&nbsp;<%= current_admin.email%>
+        </div>
+      </div>
+      <hr class="horizontal_line">
+      <hr class="vertical_line">
+    </div>
+    <div class="menu_area">
+      <div class="menu_list">
+        <ul class="layui-nav layui-nav-tree" lay-filter="menu_tree">
+          <li class="layui-nav-item"><a href="javascript:;" >产品管理</a></li>
+          <li class="layui-nav-item"><a href="javascript:;" >设计师管理</a></li>
+          <li class="layui-nav-item"><a href="javascript:;" >品牌故事</a></li>
+          <li class="layui-nav-item"><a href="javascript:;" >话题管理</a></li>
+          <li class="layui-nav-item"><a href="javascript:;" >用户管理</a></li>
+
+          <li class="layui-nav-item">
+            <a href="javascript:;">有子菜单</a>
+            <dl class="layui-nav-child">
+              <dd><a href="javascript:;">选项一</a></dd>
+              <dd><a href="javascript:;">选项二</a></dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="right_view">
+    <div class="top_button_area">
+      <div class="tab_title"></div>
+      <%= link_to image_tag("admins/tiuchu30-30-.png", class: "exit_button"), admin_logout_path%>
+    </div>
+    <div class="show_box">
+      <div class="show_area">
+        <iframe class="iframe_area" src="<%=admin_welcome_path %>" frameborder="0" scrolling="auto"></iframe>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+    layui.use(['layer', 'element'], function(){
+        var element = layui.element(); //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(menu_tree)', function(elem){
+            //console.log(elem)
+            // layer.msg(elem.text());
+            var show_path = "";
+            switch (elem.text()){
+                case "产品管理" : show_path = "";
+                    break;
+                case "设计师管理" : show_path = "";
+                    break;
+                case "品牌故事" : show_path = "";
+                    break;
+                case "话题管理": show_path = "";
+                    break;
+                case "用户管理": show_path = "";
+                    break;
+            }
+
+            if(show_path != ""){
+                $(".tab_title").text(elem.text());
+                $(".iframe_area").attr("src", show_path);
+            }else{
+                layer.msg(elem.text()+"尚未完善");
+            }
+        });
+    });
+
+    $(function () {
+        $('.avatar_back').click(function () {
+            $(".tab_title").text("修改信息");
+            $(".iframe_area").attr("src", "<%=admin_edit_path%>");
+        });
+    });
+
+</script>

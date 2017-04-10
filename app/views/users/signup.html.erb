@@ -1,25 +1,38 @@
-<%= form_for :user , url: users_path do |f|%>
-    <p>
-      <%= f.label :账号 %><br>
-      <%= f.text_field :name %>
-    </p>
+<%= form_for :user , url: users_path, class:'layui-form' do |f|%>
+    <div class="layui-form-item">
+      <label class="layui-form-label">账号</label>
+      <div class="layui-input-inline">
+        <%= f.text_field :name, class:'layui-input', placeholder:'请输入账号' %>
+      </div>
+    </div>
 
-    <p>
-      <%= f.label :昵称 %><br>
-      <%= f.text_field :nick_name %>
-    </p>
+    <div class="layui-form-item">
+      <label class="layui-form-label">昵称</label>
+      <div class="layui-input-inline">
+        <%= f.text_field :nick_name, class:'layui-input', placeholder:'请输入昵称' %>
+      </div>
+    </div>
 
-    <p>
-      <%= f.label :电子邮箱 %><br>
-      <%= f.text_field :email %>
-    </p>
+    <div class="layui-form-item">
+      <label class="layui-form-label">电子邮箱</label>
+      <div class="layui-input-inline">
+        <%= f.text_field :email, class:'layui-input', placeholder:'请输入电子邮箱' %>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">密碼</label>
+      <div class="layui-input-inline">
+        <%= f.password_field :password, class:'layui-input', placeholder:'请输入密码' %>
+      </div>
+    </div>
 
-    <p>
-      <%= f.label :密码 %><br>
-      <%= f.password_field :password %>
-    </p>
-
-    <p>
-      <%= f.submit %>
-    </p>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <%= f.submit '确定', class:'layui-btn'%>
+      </div>
+    </div>
 <% end %>
+
+<script>
+    layui.use('form');
+</script>
