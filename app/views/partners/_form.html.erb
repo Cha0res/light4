@@ -1,0 +1,37 @@
+<%= form_for @partner do |f| %>
+
+    <% if @partner.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@partner.errors.count, "error") %> prohibited
+            this article from being saved:
+          </h2>
+          <ul>
+            <% @partner.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :logo %><br>
+      <%= f.text_field :logo %>
+    </p>
+
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :official_site %><br>
+      <%= f.text_field :official_site %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+    <%= link_to 'Back', partners_path %>
+
+<% end %>

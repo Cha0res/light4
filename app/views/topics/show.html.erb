@@ -1,0 +1,27 @@
+<p>
+  <strong>Title:</strong>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @topic.content %>
+</p>
+
+
+<h2>Comments</h2>
+<% @topic.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.user_id %>
+    </p>
+
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.content %>
+    </p>
+<% end %>
+
+<%= render 'comments/create' %>
+
+<%= link_to 'Back', topics_path %>

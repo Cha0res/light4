@@ -1,0 +1,22 @@
+
+<%= link_to '新增', new_designer_path %>
+<table>
+  <tr>
+    <th>頭像</th>
+    <th>姓名</th>
+    <th>郵箱</th>
+  </tr>
+
+  <% @designers.each do |designer| %>
+      <tr>
+        <td><%= designer.avator %></td>
+        <td><%= designer.name %></td>
+        <td><%= designer.email %></td>
+        <td><%= link_to 'Show', designer_path(designer) %></td>
+        <td><%= link_to 'Edit', edit_designer_path(designer) %></td>
+        <td><%= link_to 'Destroy', designer_path(designer),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>

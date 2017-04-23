@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326180135) do
+ActiveRecord::Schema.define(version: 20170423065001) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,57 @@ ActiveRecord::Schema.define(version: 20170326180135) do
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "designers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "avator"
+    t.text     "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "partners", force: :cascade do |t|
+    t.string   "name"
+    t.string   "logo"
+    t.string   "official_site"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "cover"
+    t.string   "product_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.date     "time_node"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "topic_type"
   end
 
   create_table "users", force: :cascade do |t|

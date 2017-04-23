@@ -1,0 +1,27 @@
+<p>
+  <strong>name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @product.description %>
+</p>
+
+
+<h2>Comments</h2>
+<% @product.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.user_id %>
+    </p>
+
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.content %>
+    </p>
+<% end %>
+
+<%= render 'comments/create' %>
+
+<%= link_to 'Back', products_path %>

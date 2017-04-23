@@ -1,0 +1,22 @@
+
+<%= link_to '新增', new_partner_path %>
+<table>
+  <tr>
+    <th>logo</th>
+    <th>名稱</th>
+    <th>官方網</th>
+  </tr>
+
+  <% @partners.each do |partner| %>
+      <tr>
+        <td><%= partner.logo %></td>
+        <td><%= partner.name %></td>
+        <td><%= partner.official_site %></td>
+        <td><%= link_to 'Show', partner_path(partner) %></td>
+        <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
+        <td><%= link_to 'Destroy', partner_path(partner),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>

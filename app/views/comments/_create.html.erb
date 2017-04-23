@@ -1,0 +1,18 @@
+<%= form_for :comment, url:comments_path do |f| %>
+    <% if current_user %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <% if @topic%>
+          <%= f.hidden_field :topic_id, :value => @topic.id %>
+        <% else %>
+          <%= f.hidden_field :product_id, :value => @product.id %>
+        <% end %>
+        <p>
+          <%= f.text_area :content %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+    <%else%>
+        未登录，无法评论
+    <%end%>
+<% end %>
