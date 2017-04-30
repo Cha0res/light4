@@ -1,4 +1,4 @@
-<%= form_for @designer do |f| %>
+<%= form_for @designer, html: { multipart: true } do |f| %>
 
     <% if @designer.errors.any? %>
         <div id="error_explanation">
@@ -13,9 +13,8 @@
           </ul>
         </div>
     <% end %>
-    <p>
-      <%= f.label :avator %><br>
-      <%= f.text_field :avator %>
+   <p>
+      <%= f.file_field :avatar %>
     </p>
 
     <p>
@@ -27,17 +26,24 @@
       <%= f.label :email %><br>
       <%= f.text_field :email %>
     </p>
-
-
+      <%= f.text_area :info,  class:'layui-textarea'%>
     <p>
-      <%= f.label :info %><br>
-      <%= f.text_area :info %>
-    </p>
-
-    <p>
-      <%= f.submit %>
+      <%= f.submit '提交' ,class:'layui-btn', :data => { :"disable-with" => "提交中..." }%>
     </p>
 
     <%= link_to 'Back', designers_path %>
 
 <% end %>
+
+<script>
+    layui.use(['layedit', 'form'], function(){
+        var layedit = layui.layedit;
+        layedit.set({
+            uploadImage: {
+                url: '<%=upload_image_path%>', //接口url
+                type: 'post' //默认post
+            }
+        });
+        layedit.build('designer_info'); //建立编辑器
+    });
+</script>

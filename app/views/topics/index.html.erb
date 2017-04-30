@@ -1,20 +1,22 @@
+<div class="whole_view">
 
-<%= link_to '新增', new_topic_path %>
-<table>
-  <tr>
-    <th>标题</th>
-    <th>内容</th>
-  </tr>
+  <%= link_to '新增', new_topic_path %>
+  <table>
+    <tr>
+      <th>标题</th>
+      <th>内容</th>
+    </tr>
 
-  <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.title %></td>
-        <td><%= topic.content %></td>
-        <td><%= link_to 'Show', topic_path(topic) %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic_path(topic),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
+    <% @topics.each do |topic| %>
+        <tr>
+          <td><%= topic.title %></td>
+          <td><%= topic.content %></td>
+          <td><%= link_to 'Show', topic_path(topic) %></td>
+          <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+          <td><%= link_to 'Destroy', topic_path(topic),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,28 @@
+<p>
+  <strong>账号:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>昵称:</strong>
+  <%= @user.nick_name %>
+</p>
+
+<p>
+  <strong>头像:</strong>
+  <%= image_tag @user.avatar.url(:thumb) %>
+</p>
+
+<p>
+  <strong>email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>mobile:</strong>
+  <%= @user.mobile %>
+</p>
+
+
+
+<%= link_to 'Back', users_path %>

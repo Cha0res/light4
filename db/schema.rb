@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423065001) do
+ActiveRecord::Schema.define(version: 20170424011502) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -33,18 +33,26 @@ ActiveRecord::Schema.define(version: 20170423065001) do
   create_table "designers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "avator"
+    t.string   "avatar"
     t.text     "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "partners", force: :cascade do |t|
     t.string   "name"
     t.string   "logo"
     t.string   "official_site"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "products", force: :cascade do |t|
@@ -52,8 +60,12 @@ ActiveRecord::Schema.define(version: 20170423065001) do
     t.text     "description"
     t.string   "cover"
     t.string   "product_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -77,11 +89,15 @@ ActiveRecord::Schema.define(version: 20170423065001) do
     t.string   "nick_name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "avator"
+    t.string   "avatar"
     t.string   "mobile"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "auth_token"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

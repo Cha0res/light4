@@ -1,3 +1,4 @@
+<div class="whole_view">
   <div class="left_view">
     <div class="top_box">
       <div class="admin_info">
@@ -21,14 +22,7 @@
           <li class="layui-nav-item"><a href="javascript:;" >品牌故事</a></li>
           <li class="layui-nav-item"><a href="javascript:;" >话题管理</a></li>
           <li class="layui-nav-item"><a href="javascript:;" >用户管理</a></li>
-
-          <li class="layui-nav-item">
-            <a href="javascript:;">有子菜单</a>
-            <dl class="layui-nav-child">
-              <dd><a href="javascript:;">选项一</a></dd>
-              <dd><a href="javascript:;">选项二</a></dd>
-            </dl>
-          </li>
+          <li class="layui-nav-item"><a href="javascript:;" >合作方管理</a></li>
         </ul>
       </div>
     </div>
@@ -45,6 +39,7 @@
       </div>
     </div>
   </div>
+</div>
 
 
 
@@ -58,16 +53,17 @@
             // layer.msg(elem.text());
             var show_path = "";
             switch (elem.text()){
-                case "产品管理" : show_path = "";
+                case "产品管理" : show_path = "<%=products_path %>";
                     break;
-                case "设计师管理" : show_path = "";
+                case "设计师管理" : show_path = "<%=designers_path %>";
                     break;
-                case "品牌故事" : show_path = "";
+                case "品牌故事" : show_path = "<%=stories_path %>";
                     break;
                 case "话题管理": show_path = "<%=topics_path %>";
                     break;
-                case "用户管理": show_path = "";
+                case "用户管理": show_path = "<%=users_path %>";
                     break;
+                case "合作方管理": show_path = "<%=partners_path %>";
             }
 
             if(show_path != ""){

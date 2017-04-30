@@ -1,0 +1,47 @@
+<div class="whole_view">
+  <%= form_for @user, html: { multipart: true } do |f| %>
+
+      <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@user.errors.count, "error") %> prohibited
+              this article from being saved:
+            </h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <%= f.hidden_field :name %>
+
+      <%= f.file_field :avatar %>
+
+      <p>
+        <%= f.label :nick_name %><br>
+        <%= f.text_field :nick_name %>
+      </p>
+
+      <p>
+        <%= f.label :mobile %><br>
+        <%= f.text_field :mobile %>
+      </p>
+
+      <p>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </p>
+
+      <p>
+        <%= f.label :密码 %><br>
+        <%= f.password_field :password %>
+      </p>
+
+      <p>
+        <%= f.submit '保存'%>
+      </p>
+
+  <% end %>
+</div>

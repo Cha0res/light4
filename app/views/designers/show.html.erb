@@ -1,22 +1,26 @@
-<p>
-  <strong>name:</strong>
-  <%= @designer.name %>
-</p>
+<div class="whole_view">
+  <p>
+    <strong>name:</strong>
+    <%= @designer.name %>
+  </p>
 
-<p>
-  <strong>avator:</strong>
-  <%= @designer.avator %>
-</p>
+  <p>
+    <strong>avator:</strong>
+    <!--<%= image_tag @designer.avatar.url %>-->
+    <%= image_tag @designer.avatar.url(:medium) %>
+    <!--<%= image_tag @designer.avatar.url(:thumb) %>-->
+  </p>
 
-<p>
-  <strong>email:</strong>
-  <%= @designer.email %>
-</p>
+  <p>
+    <strong>email:</strong>
+    <%= @designer.email %>
+  </p>
 
-<p>
-  <strong>info:</strong>
-  <%= @designer.info %>
-</p>
+  <p>
+    <strong>info:</strong>
+    <%= (@designer.info).html_safe %>
+  </p>
 
 
-<%= link_to 'Back', designers_path %>
+  <%= link_to 'Back', designers_path %>
+</div>

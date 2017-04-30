@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   get '/logout' => 'users#logout', :as => 'logout'
 
-  resource :users, only: [:create, :update]
+  resources :users
 
 
   # 话题
@@ -48,6 +48,9 @@ Rails.application.routes.draw do
 
   # 合作方管理
   resources :partners
+
+  # 圖片上傳
+  post '/upload/image' => 'upload#image', :as => 'upload_image'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
