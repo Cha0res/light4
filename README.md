@@ -1,6 +1,6 @@
 # README
 
-This is a graduation project of my friend.
+This is a graduation project.
 
 ENV:
 
