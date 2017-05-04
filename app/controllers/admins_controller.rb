@@ -24,7 +24,7 @@ class AdminsController < ApplicationController
       session[:admin_id] = @admin.id
       redirect_to :admin_main
     else
-      redirect_to :admin_login
+      redirect_to :admin_login, notice: '账号/密码错误'
     end
   end
 

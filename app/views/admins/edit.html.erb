@@ -1,30 +1,49 @@
 
 <div class="whole_view">
+  <%= form_for :admin, url: admins_path(@admin),html: { class: 'form_area' }, method: :patch do |f| %>
+      <div class="content_area" >
+        <div class="layui-form inside_area">
+          <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+              <%= f.text_field :name, class: 'layui-input' %>
+            </div>
+          </div>
 
-  <%= form_for :admin, url: admins_path(@admin), method: :patch do |f| %>
+          <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+              <%= f.text_field :nick_name, class: 'layui-input' %>
+            </div>
+          </div>
 
-      <p>
-        <%= f.label :账号 %><br>
-        <%= f.text_field :name %>
-      </p>
+          <div class="layui-form-item">
+            <label class="layui-form-label">电子邮箱</label>
+            <div class="layui-input-block">
+              <%= f.text_field :email, class: 'layui-input' %>
+            </div>
+          </div>
 
-      <p>
-        <%= f.label :姓名 %><br>
-        <%= f.text_field :nick_name %>
-      </p>
 
-      <p>
-        <%= f.label :电子邮箱 %><br>
-        <%= f.text_field :email %>
-      </p>
+          <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+              <%= f.password_field :password, class: 'layui-input' %>
+            </div>
+          </div>
 
-      <p>
-        <%= f.label :密码 %><br>
-        <%= f.password_field :password %>
-      </p>
+        </div>
 
-      <p>
-        <%= f.submit '保存' %>
-      </p>
+      </div>
+
+      <div class="button_area">
+        <div class="inside_area">
+          <%= f.submit '保存', class: 'layui-btn'%>
+        </div>
+      </div>
   <% end %>
 </div>
+
+<script>
+    layui.use('form');
+</script>

@@ -1,4 +1,4 @@
-<div class="whole_view">
+<div class="out_side_box">
   <div class="middle_area">
     <div class="left_area">
       <%= image_tag "login/tupian390-510.png", class: "just_a_pic" %>
@@ -32,5 +32,10 @@
   </div>
 </div>
 <script>
-    layui.use('form');
+    layui.use(['layer','form'], function(){
+        var notice = '<%= notice %>';
+        if(notice && notice != ''){
+            layer.msg(notice,{time: 1000});
+        }
+    });
 </script>

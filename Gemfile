@@ -37,6 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 # pic upload plugin
 gem 'paperclip', '~> 5.0.0'
 
+# paginate plugin
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

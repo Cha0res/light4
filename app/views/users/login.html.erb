@@ -7,13 +7,13 @@
       <div class="dashed_box">
         <%= form_tag '/create_login_session', class:'layui-form layui-form-pane' do %>
             <div class="layui-form-item">
-              <label class="layui-form-label">账号</label>
+              <label class="layui-form-label"><%= image_tag "login/shouji20-20-.png" %></label>
               <div class="layui-input-inline">
                 <%= text_field_tag :name, params[:name], class:'layui-input', placeholder:'请输入账号' %>
               </div>
             </div>
             <div class="layui-form-item">
-              <label class="layui-form-label">密碼</label>
+              <label class="layui-form-label"><%= image_tag "login/mima20-20.png" %></label>
               <div class="layui-input-inline">
                 <%= password_field_tag :password, params[:password], class:'layui-input', placeholder:'请输入密码' %>
               </div>

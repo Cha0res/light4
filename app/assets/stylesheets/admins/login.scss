@@ -1,63 +1,66 @@
-.middle_area{
-  width: 660px;
-  height: 360px;
-  position:absolute;
-  left:50%;
-  top:50%;
-  margin:-180px 0 0 -330px;
-  -webkit-box-shadow:0 0 10px 5px rgba(237, 237, 237, 0.5);
-  -moz-box-shadow:0 0 10px 5px rgba(237, 237, 237, 0.5);
-  box-shadow:0 0 10px 5px rgba(237, 237, 237, 0.5);
-  .left_area{
-    float:left;
-    width: 50%;
-    height: 100%;
-    line-height:360px;
-    background-color: #D3D0CB;
-    text-align: center;
-    .just_a_pic{
-      height: 86%;
+.out_side_box{
+  .middle_area{
+    width: 660px;
+    height: 360px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-180px 0 0 -330px;
+    -webkit-box-shadow:0 0 10px 5px rgba(237, 237, 237, 0.5);
+    -moz-box-shadow:0 0 10px 5px rgba(237, 237, 237, 0.5);
+    box-shadow:0 0 10px 5px rgba(237, 237, 237, 0.5);
+    .left_area{
+      float:left;
+      width: 50%;
+      height: 100%;
+      line-height:360px;
+      background-color: #D3D0CB;
+      text-align: center;
+      .just_a_pic{
+        height: 86%;
+      }
     }
-  }
-  .right_area{
-    float: right;
-    width: 50%;
-    height: 100%;
-    position: relative;
-    .dashed_box{
-      position: absolute;
-      top: 7%;
-      left: 8%;
-      width: 84%;
-      height: 86%;
-      border:1px dashed #DEDEDE;
-      .layui-form{
-        margin: 60px 20px;
-        .layui-form-label{
-          width: 38px;
-          padding: 0;
-          line-height: 38px;
-          text-align: center;
-          img{
-            width: 20px;
+    .right_area{
+      float: right;
+      width: 50%;
+      height: 100%;
+      position: relative;
+      .dashed_box{
+        position: absolute;
+        top: 7%;
+        left: 8%;
+        width: 84%;
+        height: 86%;
+        border:1px dashed #DEDEDE;
+        .layui-form{
+          margin: 60px 20px;
+          .layui-form-label{
+            width: 38px;
+            padding: 0;
+            line-height: 38px;
+            text-align: center;
+            img{
+              width: 20px;
+            }
           }
-        }
-        .layui-input-inline{
-          width: 200px;
-          margin-right: 0;
-        }
-        .forget_pass{
-          width: 100%;
-          text-align: right;
-          a{
-            color: #BCA46F;
+          .layui-input-inline{
+            width: 200px;
+            margin-right: 0;
           }
-        }
-        .layui-btn{
-          margin-top: 30px;
-          width: 100%;
+          .forget_pass{
+            width: 100%;
+            text-align: right;
+            a{
+              color: #BCA46F;
+            }
+          }
+          .layui-btn{
+            margin-top: 30px;
+            width: 100%;
+          }
         }
       }
     }
   }
 }
+

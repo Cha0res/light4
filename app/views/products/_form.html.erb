@@ -1,44 +1,42 @@
-<%= form_for @product do |f| %>
-
-    <% if @product.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@product.errors.count, "error") %> prohibited
-            this article from being saved:
-          </h2>
-          <ul>
-            <% @product.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+<%= form_for @product,html: { class: 'form_area' } do |f| %>
+    <div class="content_area" >
+      <div class="layui-form inside_area">
+        <div class="layui-form-item">
+          <label class="layui-form-label">封面</label>
+          <div class="layui-input-block">
+            <%= f.file_field :cover %>
+          </div>
         </div>
-    <% end %>
-    <p>
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
-    </p>
+        <div class="layui-form-item">
+          <label class="layui-form-label">产品名</label>
+          <div class="layui-input-block">
+            <%= f.text_field :name, class: 'layui-input' %>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">产品类型</label>
+          <div class="layui-input-block">
+            <%= f.select :product_type, ['请选择一个分类', '艺术', '生活', '原创'] %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :product_type %><br>
-      <%= f.text_field :product_type %>
-    </p>
+        <div class="layui-form-item">
+          <label class="layui-form-label">描述</label>
+          <div class="layui-input-block">
+            <%= f.text_area :description, class:'layui-textarea' %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :description %><br>
-      <%= f.text_area :description,  class:'layui-textarea'%>
-    </p>
-
-    <p>
-      <%= f.label :cover %><br>
-      <%= f.text_field :cover %>
-    </p>
-
-    <p>
-      <%= f.submit %>
-    </p>
-
-    <%= link_to 'Back', products_path %>
-
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= f.submit '保存', :class=>'layui-btn' %>
+          <%= link_to '返回', products_path, :class=>'layui-btn layui-btn-primary' %>
+        </div>
+      </div>
+    </div>
 <% end %>
 
 <script>
