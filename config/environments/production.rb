@@ -18,16 +18,9 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
-
   # Compress JavaScripts and CSS.
-  config.assets.compress = true
   config.assets.js_compressor = :uglifier
-  config.assets.css_compressor = :sass
-
-  # Generate digests for assets URLs.
-  config.assets.digest = true
+  # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
