@@ -8,7 +8,7 @@ ENV:
 
 * Rails 5.0.2
 
-* sqlite3
+* sqlite3/Postgresql
 
 * macOS 10.12.3
 
