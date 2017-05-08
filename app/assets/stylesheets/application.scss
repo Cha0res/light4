@@ -77,6 +77,79 @@ html,body{
         bottom: 0;
         left: 3%;
         border-bottom:1px solid #ececec;
+        .title_area{
+          font-size: 18px;
+          text-align: center;
+          margin: 0 100px 0 0;
+        }
+        .type_area{
+          font-size: 12px;
+          text-align: center;
+          color: #9C9C9C;
+          margin: 5px 100px 10px 0;
+        }
+        .layui-elem-field{
+          width: 84%;
+        }
+        .content_area,.cover_area, .comment_area{
+          padding: 0 10px;
+          margin: 8px 0 16px 0;
+        }
+        .cover_area{
+          text-align: center;
+        }
+        .cover_pic{
+          width: 300px;
+        }
+        .comment_area{
+          .comment_item{
+            width: 100%;
+            height: auto;
+            background: #F5F5F5;
+            border-radius: 10px;
+            margin: 10px 0;
+            min-height: 76px;
+            display: flex;
+            flex-direction: row;
+            .comment_avatar_area{
+              width: 84px;
+              .comment_avatar_box{
+                width: 60px;
+                height: 60px;
+                margin: 15px 12px;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 1px solid #E6E6E6;
+                img{
+                  height: 100%;
+                }
+              }
+            }
+            .right_comment_area{
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              margin: 12px;
+              .comment_name_area{
+                height: 30px;
+                line-height: 30px;
+                font-weight:bold;
+                color: #b3b3b3;
+              }
+              .comment_content_area{
+                flex: 1;
+                font-size: 13px;
+              }
+              .comment_time_ago_area{
+                height: 20px;
+                line-height: 20px;
+                color: #C2C2C2;
+                font-size: 12px;
+                text-align: right;
+              }
+            }
+          }
+        }
         .item_box{
           margin: 10px 20px;
           float: left;
@@ -155,6 +228,43 @@ html,body{
         }
         .layui-form-item{
           margin: 25px 0;
+          .pic_select_area{
+            width: 210px;
+            height: 160px;
+            border-radius: 2px;
+            border:1px solid #ececec;
+            position: relative;
+            background: #FBFBFB;
+            .pic_display{
+              width: 150px;
+              height: 126px;
+              border-radius: 2px;
+              position: absolute;
+              top: 17px;
+              left: 30px;
+            }
+            .pic_cover_area{
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top:0;
+              left:0;
+              text-align: center;
+              line-height: 160px;
+              color: #FFFFFF;
+              background: rgba(130, 130, 130, 0.5);
+              display: none;
+              .pic_choose_area{
+                padding:10px 20px;
+                border:2px dashed #FFF;
+                border-radius: 4px;
+                cursor: pointer;
+              }
+              .pic_choose_button{
+                display: none;
+              }
+            }
+          }
           .layui-input{
             width: 250px !important;
           }

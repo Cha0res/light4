@@ -4,7 +4,13 @@
         <div class="layui-form-item">
           <label class="layui-form-label">封面</label>
           <div class="layui-input-block">
-            <%= f.file_field :cover %>
+            <div class="pic_select_area" onmouseover='$(".pic_cover_area").show()'  onmouseout='$(".pic_cover_area").hide()'>
+              <%= image_tag @product.cover.url(:medium), class:'pic_display' %>
+              <div class="pic_cover_area">
+                <span class="pic_choose_area" onclick='$(".pic_choose_button").trigger("click")'>选择图片</span>
+                <%= f.file_field :cover, class:'pic_choose_button' %>
+              </div>
+            </div>
           </div>
         </div>
         <div class="layui-form-item">
@@ -50,4 +56,19 @@
         });
         layedit.build('product_description'); //建立编辑器
     });
+
+    $(function() {
+        $('.pic_select_button').change(function(e) {
+            var file = e.target.files[0];
+            preview(file);
+        })
+    })
+
+    function preview(file) {
+        var reader = new FileReader()
+        reader.onload = function(e) {
+            $('.pic_display').attr("src", e.target.result)
+        }
+        reader.readAsDataURL(file)
+    }
 </script>

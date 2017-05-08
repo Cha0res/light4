@@ -40,6 +40,9 @@ gem 'paperclip', '~> 5.0.0'
 # paginate plugin
 gem 'kaminari'
 
+# i18n
+gem 'rails-i18n'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

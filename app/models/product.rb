@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :comments
   has_attached_file :cover,
                     :styles => { medium: "300x300>", thumb: "100x100>" },
-                    :default_url => "/images/users/yonghu.png",
+                    :default_url => "admins/tupian200-200-.png",
                     :path => ":rails_root/public/uploads/products_cover/:id_:style.:extension",
                     :url => "/uploads/products_cover/:id_:style.:extension"
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
