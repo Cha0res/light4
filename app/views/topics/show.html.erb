@@ -1,29 +1,96 @@
 <div class="whole_view">
-  <p>
-    <strong>Title:</strong>
-    <%= @topic.title %>
-  </p>
+  <div class="form_area">
+    <div class="content_area" >
+      <div class="inside_area">
+        <div class="title_area">
+          <%= @topic.title %>
+        </div>
 
-  <p>
-    <strong>Text:</strong>
-    <%= @topic.content %>
-  </p>
+        <div class="content_area">
+          <%= (@topic.content).html_safe %>
+        </div>
+
+        <fieldset class="layui-elem-field site-demo-button">
+          <legend>创建者</legend>
+          <div class="creater_area">
+            <div class="avatar_box">
+              <% if @topic.user_id == 0%>
+                  <%= image_tag 'admins/logo46-46.png'%>
+              <% else %>
+                  <%= image_tag @topic.user.avatar.url(:medium), class:'cover_pic' %>
+              <% end %>
+            </div>
+            <div class="right_box">
+              <div class="nick_name_box">
+                <%= @topic.user.nick_name %>
+              </div>
+              <div class="name_box">
+                <%= @topic.user.name %>
+              </div>
+              <div class="email_box">
+                <%= @topic.user.email %>
+              </div>
+            </div>
+          </div>
+        </fieldset>
 
 
-  <h2>Comments</h2>
-  <% @topic.comments.each do |comment| %>
-      <p>
-        <strong>Commenter:</strong>
-        <%= comment.user_id %>
-      </p>
+        <fieldset class="layui-elem-field site-demo-button">
+          <legend>评论</legend>
+          <div class="comment_area">
+            <% @topic.comments.each do |comment| %>
+                <div class="comment_item">
+                  <div class="comment_avatar_area">
+                    <% if comment.user_id == 0 %>
+                        <%= image_tag 'admins/logo46-46.png'%>
+                    <% else %>
+                        <%= image_tag comment.user.avatar.url(:medium) %>
+                    <% end %>
+                  </div>
+                  <div class="comment-body">
+                    <div class="comment_name_area">
+                      <%= comment.user.nick_name %>
+                    </div>
+                    <div class="comment_content_area">
+                      <%= comment.content %>
+                    </div>
+                    <div class="comment_time_ago_area">
+                      <%= time_ago_in_words(comment.created_at) %>前
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+            <div class="comment_item">
+              <div class="comment_avatar_area">
+                <%= image_tag 'admins/logo46-46.png'%>
+              </div>
+              <%= form_for :comment, url:comments_path, html:{class:'comment-body'} do |f| %>
+                  <%= f.hidden_field :user_id, :value => 0 %>
+                  <%= f.hidden_field :topic_id, :value => @topic.id %>
+                  <div class="comment_name_area">
+                    <%= current_admin.nick_name %>
+                  </div>
+                  <div class="comment_content_area">
+                    <%= f.text_area :content , class:'layui-textarea'%>
+                  </div>
+                  <div class="comment_button_area">
+                    <%= f.submit '评论', :class=>'layui-btn'%>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
 
-      <p>
-        <strong>Comment:</strong>
-        <%= comment.content %>
-      </p>
-  <% end %>
-
-  <%= render 'comments/create' %>
-
-  <%= link_to 'Back', topics_path %>
+    <div class="button_area">
+      <div class="inside_area">
+        <%= link_to '返回', topics_path, :class=>'layui-btn layui-btn-primary' %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+    layui.use('form');
+</script>
