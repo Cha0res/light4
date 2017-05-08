@@ -58,11 +58,11 @@
     });
 
     $(function() {
-        $('.pic_select_button').change(function(e) {
+        $('.pic_choose_button').change(function(e) {
             var file = e.target.files[0];
             preview(file);
         })
-    })
+    });
 
     function preview(file) {
         var reader = new FileReader()

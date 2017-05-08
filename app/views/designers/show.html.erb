@@ -1,26 +1,38 @@
 <div class="whole_view">
-  <p>
-    <strong>name:</strong>
-    <%= @designer.name %>
-  </p>
+  <div class="form_area">
+    <div class="content_area" >
+      <div class="inside_area">
+        <div class="title_area">
+          <%= @designer.name %>
+        </div>
+        <div class="type_area">
+          <%= @designer.email %>
+        </div>
 
-  <p>
-    <strong>avator:</strong>
-    <!--<%= image_tag @designer.avatar.url %>-->
-    <%= image_tag @designer.avatar.url(:medium) %>
-    <!--<%= image_tag @designer.avatar.url(:thumb) %>-->
-  </p>
+        <div class="content_area">
+          <%= (@designer.info).html_safe %>
+        </div>
 
-  <p>
-    <strong>email:</strong>
-    <%= @designer.email %>
-  </p>
+        <fieldset class="layui-elem-field site-demo-button">
+          <legend>封面图</legend>
+          <div class="cover_area">
+            <%= image_tag @designer.avatar.url(:medium), class:'cover_pic' %>
+          </div>
+        </fieldset>
 
-  <p>
-    <strong>info:</strong>
-    <%= (@designer.info).html_safe %>
-  </p>
+      </div>
+    </div>
 
-
-  <%= link_to 'Back', designers_path %>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= link_to '返回', designers_path, :class=>'layui-btn layui-btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+    layui.use('form');
+</script>

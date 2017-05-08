@@ -1,23 +1,53 @@
 <div class="whole_view">
-  <%= link_to '新增', new_designer_path %>
-  <table>
-    <tr>
-      <th>頭像</th>
-      <th>姓名</th>
-      <th>郵箱</th>
-    </tr>
+  <div class="form_area">
+    <div class="content_area" >
+      <%= link_to new_designer_path, class:'add_button'  do %>
+          <span class="plus_icon"></span>
+      <% end %>
+      <div class="inside_area">
 
-    <% @designers.each do |designer| %>
-        <tr>
-          <td><%= image_tag designer.avatar.url(:thumb) %></td>
-          <td><%= designer.name %></td>
-          <td><%= designer.email %></td>
-          <td><%= link_to 'Show', designer_path(designer) %></td>
-          <td><%= link_to 'Edit', edit_designer_path(designer) %></td>
-          <td><%= link_to 'Destroy', designer_path(designer),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </table>
+        <% @designers.each do |designer| %>
+            <div class="item_box">
+              <div class="box_img_area">
+                <%= image_tag designer.avatar.url(:medium) %>
+              </div>
+              <div class="box_title_area">
+                <%= designer.name %>
+              </div>
+              <div class="box_info_area">
+                <%= designer.email %>
+              </div>
+              <div class="col_line"></div>
+              <div class="box_button_area">
+                <%= link_to designer_path(designer), class: 'show_button' do %>
+                    <%= image_tag 'admins/chakan-20-20.png'%>
+                <% end %>
+                <%= link_to edit_designer_path(designer), class: 'edit_button' do %>
+                    <%= image_tag 'admins/xiugai-20-20.png'%>
+                <% end %>
+                <%= link_to designer_path(designer), class: 'delete_button',
+                            method: :delete,
+                            data: { confirm: '确定删除?' } do %>
+                    <%= image_tag 'admins/shanchu20-20-.png'%>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= paginate @designers %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<script>
+    layui.use('layer', function(){
+
+    });
+</script>

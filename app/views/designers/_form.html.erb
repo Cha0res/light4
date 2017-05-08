@@ -1,38 +1,48 @@
-<%= form_for @designer, html: { multipart: true } do |f| %>
-
-    <% if @designer.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@designer.errors.count, "error") %> prohibited
-            this article from being saved:
-          </h2>
-          <ul>
-            <% @designer.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+<%= form_for @designer,html: { class: 'form_area' } do |f| %>
+    <div class="content_area" >
+      <div class="layui-form inside_area">
+        <div class="layui-form-item">
+          <label class="layui-form-label">设计师头像</label>
+          <div class="layui-input-block">
+            <div class="pic_select_area" onmouseover='$(".pic_cover_area").show()'  onmouseout='$(".pic_cover_area").hide()'>
+              <%= image_tag @designer.avatar.url(:medium), class:'pic_display' %>
+              <div class="pic_cover_area">
+                <span class="pic_choose_area" onclick='$(".pic_choose_button").trigger("click")'>选择图片</span>
+                <%= f.file_field :avatar, class:'pic_choose_button' %>
+              </div>
+            </div>
+          </div>
         </div>
-    <% end %>
-   <p>
-      <%= f.file_field :avatar %>
-    </p>
+        <div class="layui-form-item">
+          <label class="layui-form-label">设计师名</label>
+          <div class="layui-input-block">
+            <%= f.text_field :name, class: 'layui-input' %>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">邮箱</label>
+          <div class="layui-input-block">
+            <%= f.text_field :email, class: 'layui-input' %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
-    </p>
+        <div class="layui-form-item">
+          <label class="layui-form-label">简介</label>
+          <div class="layui-input-block">
+            <%= f.text_area :info, class:'layui-textarea' %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </p>
-      <%= f.text_area :info,  class:'layui-textarea'%>
-    <p>
-      <%= f.submit '提交' ,class:'layui-btn', :data => { :"disable-with" => "提交中..." }%>
-    </p>
-
-    <%= link_to '返回', designers_path %>
-
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= f.submit '提交' ,class:'layui-btn', :data => { :"disable-with" => "提交中..." }%>
+          <%= link_to '返回', designers_path, :class=>'layui-btn layui-btn-primary' %>
+        </div>
+      </div>
+    </div>
 <% end %>
 
 <script>
@@ -46,4 +56,19 @@
         });
         layedit.build('designer_info'); //建立编辑器
     });
+
+    $(function() {
+        $('.pic_choose_button').change(function(e) {
+            var file = e.target.files[0];
+            preview(file);
+        })
+    });
+
+    function preview(file) {
+        var reader = new FileReader()
+        reader.onload = function(e) {
+            $('.pic_display').attr("src", e.target.result)
+        }
+        reader.readAsDataURL(file)
+    }
 </script>

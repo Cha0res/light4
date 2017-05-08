@@ -1,22 +1,50 @@
 <div class="whole_view">
+  <div class="form_area">
+    <div class="content_area" >
+      <%= link_to new_topic_path, class:'add_button'  do %>
+          <span class="plus_icon"></span>
+      <% end %>
+      <div class="inside_area">
 
-  <%= link_to '新增', new_topic_path %>
-  <table>
-    <tr>
-      <th>标题</th>
-      <th>内容</th>
-    </tr>
-
-    <% @topics.each do |topic| %>
-        <tr>
-          <td><%= topic.title %></td>
-          <td><%= topic.content %></td>
-          <td><%= link_to 'Show', topic_path(topic) %></td>
-          <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-          <td><%= link_to 'Destroy', topic_path(topic),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </table>
+        <% @topics.each do |topic| %>
+            <div class="item_box">
+              <div class="box_avatar_area">
+                <%= image_tag topic.user.avatar.url(:medium) %>
+              </div>
+              <div class="box_title_area">
+                <%= topic.title %>
+              </div>
+              <div class="box_info_area">
+                <%= topic.user.name %>
+              </div>
+              <div class="col_line"></div>
+              <div class="box_button_area">
+                <%= link_to topic_path(topic), class: 'show_button' do %>
+                    <%= image_tag 'admins/chakan-20-20.png'%>
+                <% end %>
+                <%= link_to topic_path(topic), class: 'edit_button',
+                            method: :delete,
+                            data: { confirm: '确定删除?' } do %>
+                    <%= image_tag 'admins/shanchu20-20-.png'%>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= paginate @topics %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<script>
+    layui.use('layer', function(){
+
+    });
+</script>

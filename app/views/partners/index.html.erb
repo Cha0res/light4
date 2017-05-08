@@ -1,24 +1,51 @@
 <div class="whole_view">
+  <div class="form_area">
+    <div class="content_area" >
+      <%= link_to new_partner_path, class:'add_button'  do %>
+          <span class="plus_icon"></span>
+      <% end %>
+      <div class="inside_area">
 
-  <%= link_to '新增', new_partner_path %>
-  <table>
-    <tr>
-      <th>logo</th>
-      <th>名稱</th>
-      <th>官方網</th>
-    </tr>
+        <% @partners.each do |partner| %>
+            <div class="item_box">
+              <div class="box_logo_area">
+                <%= image_tag partner.logo.url(:medium) %>
+              </div>
+              <div class="box_title_area">
+                <%= partner.name %>
+              </div>
+              <div class="box_info_area">
+                <%= partner.official_site %>
+              </div>
+              <div class="col_line"></div>
+              <div class="box_button_area">
 
-    <% @partners.each do |partner| %>
-        <tr>
-          <td><%= partner.logo %></td>
-          <td><%= partner.name %></td>
-          <td><%= partner.official_site %></td>
-          <td><%= link_to 'Show', partner_path(partner) %></td>
-          <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
-          <td><%= link_to 'Destroy', partner_path(partner),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </table>
+                <%= link_to edit_partner_path(partner), class: 'show_button' do %>
+                    <%= image_tag 'admins/xiugai-20-20.png'%>
+                <% end %>
+                <%= link_to partner_path(partner), class: 'edit_button',
+                            method: :delete,
+                            data: { confirm: '确定删除?' } do %>
+                    <%= image_tag 'admins/shanchu20-20-.png'%>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= paginate @partners %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<script>
+    layui.use('layer', function(){
+
+    });
+</script>

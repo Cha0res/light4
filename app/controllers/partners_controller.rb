@@ -1,6 +1,6 @@
 class PartnersController < ApplicationController
   def index
-    @partners = Partner.all
+    @partners = Partner.page params[:page]
   end
 
   def show
@@ -14,7 +14,7 @@ class PartnersController < ApplicationController
   def create
     @partner = Partner.new(partner_params)
     if @partner.save
-      redirect_to @partner
+      redirect_to partners_path
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class PartnersController < ApplicationController
     @partner = Partner.find(params[:id])
 
     if @partner.update(partner_params)
-      redirect_to @partner
+      redirect_to partners_path
     else
       render 'edit'
     end

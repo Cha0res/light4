@@ -9,7 +9,7 @@
         <% @products.each do |product| %>
             <div class="item_box">
               <div class="box_img_area">
-                <%= image_tag product.cover.url(:thumb) %>
+                <%= image_tag product.cover.url(:medium) %>
               </div>
               <div class="box_title_area">
                 <%= product.name %>

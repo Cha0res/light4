@@ -1,21 +1,47 @@
 <div class="whole_view">
-  <table>
-    <tr>
-      <th>頭像</th>
-      <th>姓名</th>
-      <th>手机号</th>
-    </tr>
+  <div class="form_area">
+    <div class="content_area" >
+      <div class="inside_area">
 
-    <% @users.each do |user| %>
-        <tr>
-          <td><%= image_tag user.avatar.url(:thumb) %></td>
-          <td><%= user.name %></td>
-          <td><%= user.mobile %></td>
-          <td><%= link_to 'Show', user_path(user) %></td>
-          <td><%= link_to 'Destroy', user_path(user),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </table>
+        <% @users.each do |user| %>
+            <div class="item_box">
+              <div class="box_avatar_area">
+                <%= image_tag user.avatar.url(:medium) %>
+              </div>
+              <div class="box_title_area">
+                <%= user.name %>
+              </div>
+              <div class="box_info_area">
+                <%= user.nick_name %>
+              </div>
+              <div class="col_line"></div>
+              <div class="box_button_area">
+                <%= link_to user_path(user), class: 'show_button' do %>
+                    <%= image_tag 'admins/chakan-20-20.png'%>
+                <% end %>
+                <%= link_to user_path(user), class: 'edit_button',
+                            method: :delete,
+                            data: { confirm: '确定删除?' } do %>
+                    <%= image_tag 'admins/shanchu20-20-.png'%>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="button_area">
+        <div class="inside_area">
+          <%= paginate @users %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<script>
+    layui.use('layer', function(){
+
+    });
+</script>
