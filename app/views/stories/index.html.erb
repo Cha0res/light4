@@ -1,22 +1,43 @@
 <div class="whole_view">
+  <div class="form_area">
+    <div class="content_area" >
+      <%= link_to new_story_path, class:'add_button'  do %>
+          <span class="plus_icon"></span>
+      <% end %>
+      <div class="inside_area">
 
-  <%= link_to '新增', new_story_path %>
-  <table>
-    <tr>
-      <th>時間</th>
-      <th>描述</th>
-    </tr>
+        <% @stories.each do |story| %>
+            <div class="item_box_large">
+              <div class="box_time_node_area">
+                <%= story.time_node %>
+              </div>
+              <div class="box_story_area">
+                <%= story.description %>
+              </div>
+              <div class="col_line"></div>
+              <div class="box_button_area">
+                <%= link_to edit_story_path(story), class: 'show_button' do %>
+                    <%= image_tag 'admins/xiugai-20-20.png'%>
+                <% end %>
+                <%= link_to story_path(story), class: 'edit_button',
+                            method: :delete,
+                            data: { confirm: '确定删除?' } do %>
+                    <%= image_tag 'admins/shanchu20-20-.png'%>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="button_area">
 
-    <% @stories.each do |story| %>
-        <tr>
-          <td><%= story.time_node %></td>
-          <td><%= story.description %></td>
-          <td><%= link_to 'Show', story_path(story) %></td>
-          <td><%= link_to 'Edit', edit_story_path(story) %></td>
-          <td><%= link_to 'Destroy', story_path(story),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </table>
+    </div>
+  </div>
 </div>
+
+
+<script>
+    layui.use('layer', function(){
+
+    });
+</script>

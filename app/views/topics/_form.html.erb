@@ -1,31 +1,60 @@
-<%= form_for @topic do |f| %>
-    <% if @topic.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@topic.errors.count, "error") %> prohibited
-            this article from being saved:
-          </h2>
-          <ul>
-            <% @topic.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+<%= form_for @topic,html: { class: 'form_area' } do |f| %>
+    <div class="content_area" >
+      <div class="layui-form inside_area">
+        <div class="layui-form-item">
+          <%= f.hidden_field :user_id, :value => 0 %>
+          <label class="layui-form-label">标题</label>
+          <div class="layui-input-block">
+            <%= f.text_field :title, class: 'layui-input' %>
+          </div>
         </div>
-    <% end %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
+        <div class="layui-form-item">
+          <label class="layui-form-label">话题类型</label>
+          <div class="layui-input-block">
+            <%= f.select :topic_type, ['请选择一个分类', '艺术', '生活', '原创'] %>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">描述</label>
+          <div class="layui-input-block">
+            <%= f.text_area :content, class:'layui-textarea' %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :content %><br>
-      <%= f.text_area :content %>
-    </p>
-
-    <p>
-      <%= f.submit %>
-    </p>
-
-    <%= link_to 'Back', topics_path %>
+      </div>
+    </div>
+    <div class="button_area">
+      <div class="inside_area">
+        <%= f.submit '保存', :class=>'layui-btn' %>
+        <%= link_to '返回', topics_path, :class=>'layui-btn layui-btn-primary' %>
+      </div>
+    </div>
 <% end %>
+
+<script>
+    layui.use(['layedit', 'form'], function(){
+        var layedit = layui.layedit;
+        layedit.set({
+            uploadImage: {
+                url: '<%=upload_image_path%>', //接口url
+                type: 'post' //默认post
+            }
+        });
+        layedit.build('topic_content'); //建立编辑器
+    });
+
+    $(function() {
+        $('.pic_choose_button').change(function(e) {
+            var file = e.target.files[0];
+            preview(file);
+        })
+    });
+
+    function preview(file) {
+        var reader = new FileReader()
+        reader.onload = function(e) {
+            $('.pic_display').attr("src", e.target.result)
+        }
+        reader.readAsDataURL(file)
+    }
+</script>

@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   def index
-    @stories = Story.all
+    @stories = Story.order('time_node DESC')
   end
 
   def show
@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     if @story.save
-      redirect_to @story
+      redirect_to stories_path
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
 
     if @story.update(story_params)
-      redirect_to @story
+      redirect_to stories_path
     else
       render 'edit'
     end

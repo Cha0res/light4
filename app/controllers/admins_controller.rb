@@ -39,12 +39,14 @@ class AdminsController < ApplicationController
     @admin = current_admin
 
     if @admin.update(admin_params)
-
+      user = User.find(0)
+      if user
+        user.update(admin_params)
+      end
+      redirect_to :admin_edit, notice: '修改成功'
     else
-
+      redirect_to :admin_edit, notice: '修改失败'
     end
-
-    redirect_to :admin_edit
   end
 
   private

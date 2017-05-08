@@ -25,38 +25,53 @@
           <legend>评论</legend>
           <div class="comment_area">
             <% @product.comments.each do |comment| %>
-                <div class="comment_item">
-                  <div class="comment_avatar_area">
-                    <div class="comment_avatar_box">
-                      <%= image_tag comment.user.avatar.url(:medium)%>
-                    </div>
-                  </div>
-                  <div class="right_comment_area">
-                    <div class="comment_name_area">
-                      <%= comment.user.nick_name %>
-                    </div>
-                    <div class="comment_content_area">
-                      <%= comment.content %>
-                    </div>
-                    <div class="comment_time_ago_area">
-                      <%= time_ago_in_words(comment.created_at) %>前
-                    </div>
-                  </div>
-
+              <div class="comment_item">
+                <div class="comment_avatar_area">
+                  <% if comment.user_id == 0 %>
+                      <%= image_tag 'admins/logo46-46.png'%>
+                  <% else %>
+                      <%= image_tag comment.user.avatar.url(:medium) %>
+                  <% end %>
                 </div>
+                <div class="comment-body">
+                  <div class="comment_name_area">
+                    <%= comment.user.nick_name %>
+                  </div>
+                  <div class="comment_content_area">
+                    <%= comment.content %>
+                  </div>
+                  <div class="comment_time_ago_area">
+                    <%= time_ago_in_words(comment.created_at) %>前
+                  </div>
+                </div>
+              </div>
             <% end %>
-
+            <div class="comment_item">
+              <div class="comment_avatar_area">
+                <%= image_tag 'admins/logo46-46.png'%>
+              </div>
+              <%= form_for :comment, url:comments_path, html:{class:'comment-body'} do |f| %>
+                <%= f.hidden_field :user_id, :value => 0 %>
+                <%= f.hidden_field :product_id, :value => @product.id %>
+                <div class="comment_name_area">
+                  <%= current_admin.nick_name %>
+                </div>
+                <div class="comment_content_area">
+                  <%= f.text_area :content , class:'layui-textarea'%>
+                </div>
+                <div class="comment_button_area">
+                  <%= f.submit '评论', :class=>'layui-btn'%>
+                </div>
+              <% end %>
+            </div>
           </div>
         </fieldset>
-
       </div>
     </div>
 
     <div class="button_area">
-      <div class="button_area">
-        <div class="inside_area">
-          <%= link_to '返回', products_path, :class=>'layui-btn layui-btn-primary' %>
-        </div>
+      <div class="inside_area">
+        <%= link_to '返回', products_path, :class=>'layui-btn layui-btn-primary' %>
       </div>
     </div>
   </div>

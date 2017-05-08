@@ -9,20 +9,29 @@
         <% @topics.each do |topic| %>
             <div class="item_box">
               <div class="box_avatar_area">
-                <%= image_tag topic.user.avatar.url(:medium) %>
+                <% if topic.user_id != 0 %>
+                  <%= image_tag topic.user.avatar.url(:medium) %>
+                <% else %>
+                    <%= image_tag 'admins/logo46-46.png'%>
+                <% end %>
               </div>
               <div class="box_title_area">
                 <%= topic.title %>
               </div>
               <div class="box_info_area">
-                <%= topic.user.name %>
+                <%= topic.user.nick_name %>
               </div>
               <div class="col_line"></div>
               <div class="box_button_area">
                 <%= link_to topic_path(topic), class: 'show_button' do %>
                     <%= image_tag 'admins/chakan-20-20.png'%>
                 <% end %>
-                <%= link_to topic_path(topic), class: 'edit_button',
+                <% if topic.user_id == 0 %>
+                    <%= link_to edit_topic_path(topic), class: 'edit_button' do %>
+                        <%= image_tag 'admins/xiugai-20-20.png'%>
+                    <% end %>
+                <% end %>
+                <%= link_to topic_path(topic), class: 'delete_button',
                             method: :delete,
                             data: { confirm: '确定删除?' } do %>
                     <%= image_tag 'admins/shanchu20-20-.png'%>
@@ -33,10 +42,8 @@
       </div>
     </div>
     <div class="button_area">
-      <div class="button_area">
-        <div class="inside_area">
-          <%= paginate @topics %>
-        </div>
+      <div class="inside_area">
+        <%= paginate @topics %>
       </div>
     </div>
   </div>
