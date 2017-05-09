@@ -2,44 +2,45 @@
   <div class='form_area' >
     <div class="content_area" >
       <div class="inside_area">
-        <div class="layui-form-item">
-          <div class="avatar_show_area">
-            <%= image_tag @user.avatar.url(:medium) %>
-          </div>
+        <div class="avatar_show_area">
+          <%= image_tag @user.avatar.url(:medium) %>
         </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">账号</label>
-          <div class="layui-input-block">
-            <div class="show_text_area">
-              <%= @user.name %>
+        <div class="user_info_area">
+          <div class="arrow"></div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+              <div class="show_text_area">
+                <%= @user.name %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">昵称</label>
-          <div class="layui-input-block">
-            <div class="show_text_area">
-              <%= @user.nick_name %>
+          <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-block">
+              <div class="show_text_area">
+                <%= @user.nick_name %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">E-mail</label>
-          <div class="layui-input-block">
-            <div class="show_text_area">
-              <%= @user.email %>
-            </div>
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">手机号</label>
-          <div class="layui-input-block">
-            <div class="show_text_area">
-              <%= @user.mobile %>
-            </div>
-          </div>
-        </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">E-mail</label>
+            <div class="layui-input-block">
+              <div class="show_text_area">
+                <%= link_to @user.email, 'mailto:'+@user.email %>
 
+              </div>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-block">
+              <div class="show_text_area">
+                <%= link_to @user.mobile, 'tel:'+@user.mobile %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="button_area">
