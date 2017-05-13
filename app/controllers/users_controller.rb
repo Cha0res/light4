@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if current_user
       @user = current_user
     else
-      redirect_to :login
+      redirect_to :login, notice: '请先登录'
     end
   end
 
@@ -19,21 +19,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-
+      render 'edit', notice: '保存成功'
     else
-
+      render 'edit', notice: '保存失败'
     end
-    render 'edit'
   end
 
   def signup
-    @user =  User.new
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)
+    @user.nick_name = @user.name
     @user.save
-    redirect_to :root
+    redirect_to login_path, notice: '注册成功，请登录'
   end
 
   def login
@@ -47,9 +47,9 @@ class UsersController < ApplicationController
       else
         cookies[:auth_token] = user.auth_token
       end
-      redirect_to :root
+      redirect_to :root, notice: '登录成功'
     else
-      redirect_to :login
+      redirect_to :login, notice: '账号/密码错误'
     end
   end
 

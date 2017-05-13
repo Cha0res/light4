@@ -1,38 +1,79 @@
-<%= form_for :user , url: users_path, class:'layui-form' do |f|%>
-    <div class="layui-form-item">
-      <label class="layui-form-label">账号</label>
-      <div class="layui-input-inline">
-        <%= f.text_field :name, class:'layui-input', placeholder:'请输入账号' %>
+<div class="whole_view" style="background: #fff">
+  <div class="top_area">
+    <div class="logo_area">
+      <%= image_tag "page/index/logo46-46-.png" %>
+    </div>
+    <div class="nav_area">
+      <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item"><%= link_to '畅聊设计', login_path %></li>
+        <li class="layui-nav-item"><a href="javascript:;">设计师</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">品牌故事</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">产品案例</a></li>
+        <li class="layui-nav-item"><%= link_to '首页', root_path %></a></li>
+      </ul>
+    </div>
+    <div class="sign_area">
+      <% if current_user %>
+          <span><%= image_tag current_user.avatar.url(:thumb) %></span>
+          <span class="in_out_span">
+            <%= link_to current_user.nick_name, edit_user_path(current_user) %>|
+            <%= link_to '注销', logout_path , class: "sign-out"%>
+          </span>
+      <% else %>
+        <span class="in_out_span">
+          <%= link_to '登录', login_path, class: "sign-in" %>|
+          <%= link_to '注册', signup_path, class: "sign-up" %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="middle_area">
+    <div class="left_area">
+      <%= image_tag "login/tupian390-510.png", class: "just_a_pic" %>
+    </div>
+    <div class="right_area">
+      <div class="dashed_box">
+        <div class="tab_area">
+          <div class="tab_item">
+            <%= link_to '登录', login_path %>
+          </div>
+          <div class="tab_item current_tab">注册</div>
+        </div>
+        <%= form_for :user , url: users_path, html: { class: 'layui-form layui-form-pane' } do |f|%>
+            <div class="layui-form-item">
+              <label class="layui-form-label">邮</label>
+              <div class="layui-input-inline">
+                <%= f.text_field :email, class:'layui-input', placeholder:'请输入电子邮箱' %>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label"><%= image_tag "login/shouji20-20-.png" %></label>
+              <div class="layui-input-inline">
+                <%= f.text_field :name, class:'layui-input', placeholder:'请输入账号' %>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label"><%= image_tag "login/mima20-20.png" %></label>
+              <div class="layui-input-inline">
+                <%= f.password_field :password, class:'layui-input', placeholder:'请输入密码' %>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+                <%= f.submit '注册', class:'layui-btn sinup_btn'%>
+            </div>
+        <% end %>
       </div>
     </div>
 
-    <div class="layui-form-item">
-      <label class="layui-form-label">昵称</label>
-      <div class="layui-input-inline">
-        <%= f.text_field :nick_name, class:'layui-input', placeholder:'请输入昵称' %>
-      </div>
-    </div>
-
-    <div class="layui-form-item">
-      <label class="layui-form-label">电子邮箱</label>
-      <div class="layui-input-inline">
-        <%= f.text_field :email, class:'layui-input', placeholder:'请输入电子邮箱' %>
-      </div>
-    </div>
-    <div class="layui-form-item">
-      <label class="layui-form-label">密碼</label>
-      <div class="layui-input-inline">
-        <%= f.password_field :password, class:'layui-input', placeholder:'请输入密码' %>
-      </div>
-    </div>
-
-    <div class="layui-form-item">
-      <div class="layui-input-block">
-        <%= f.submit '确定', class:'layui-btn'%>
-      </div>
-    </div>
-<% end %>
-
+  </div>
+</div>
 <script>
-    layui.use('form');
+    layui.use(['layer','form'], function(){
+        var notice = '<%= notice %>';
+        if(notice && notice != ''){
+            layer.msg(notice,{time: 1000});
+        }
+    });
 </script>

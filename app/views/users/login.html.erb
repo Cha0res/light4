@@ -1,10 +1,44 @@
-<div class="whole_view">
+<div class="whole_view" style="background: #fff">
+  <div class="top_area">
+    <div class="logo_area">
+      <%= image_tag "page/index/logo46-46-.png" %>
+    </div>
+    <div class="nav_area">
+      <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item"><a href="javascript:;">畅聊设计</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">设计师</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">品牌故事</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">产品案例</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">首页</a></li>
+      </ul>
+    </div>
+    <div class="sign_area">
+      <% if current_user %>
+          <span><%= image_tag current_user.avatar.url(:thumb) %></span>
+          <span class="in_out_span">
+            <%= link_to current_user.nick_name, edit_user_path(current_user) %>|
+            <%= link_to '注销', logout_path , class: "sign-out"%>
+          </span>
+      <% else %>
+        <span class="in_out_span">
+          <%= link_to '登录', login_path, class: "sign-in" %>|
+          <%= link_to '注册', signup_path, class: "sign-up" %>
+        </span>
+      <% end %>
+    </div>
+  </div>
   <div class="middle_area">
     <div class="left_area">
       <%= image_tag "login/tupian390-510.png", class: "just_a_pic" %>
     </div>
     <div class="right_area">
       <div class="dashed_box">
+        <div class="tab_area">
+          <div class="tab_item current_tab">登录</div>
+          <div class="tab_item">
+            <%= link_to '注册', signup_path %>
+          </div>
+        </div>
         <%= form_tag '/create_login_session', class:'layui-form layui-form-pane' do %>
             <div class="layui-form-item">
               <label class="layui-form-label"><%= image_tag "login/shouji20-20-.png" %></label>
@@ -23,11 +57,15 @@
             </div>
         <% end %>
       </div>
-
     </div>
 
   </div>
 </div>
 <script>
-    layui.use('form');
+    layui.use(['layer','form','element'], function(){
+        var notice = '<%= notice %>';
+        if(notice && notice != ''){
+            layer.msg(notice,{time: 1000});
+        }
+    });
 </script>
