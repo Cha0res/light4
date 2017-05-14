@@ -1303,7 +1303,7 @@ a cite {
     top:0;
     width:0;
     height:5px;
-    background-color:#BCA46F;
+    background-color: #ffffff;
     transition:all .2s;
     -webkit-transition:all .2s
 }
