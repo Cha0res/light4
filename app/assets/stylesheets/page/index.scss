@@ -200,9 +200,23 @@
       width: 70%;
       height: auto;
       text-align: center;
-      .title{
-        margin-top: 10px;
-        font-size: 18px;
+      .example_box{
+        width: 94%;
+        margin: 30px 3% 0 3%;
+        display: flex;
+        flex-direction: row;
+        .item_box{
+          background: #FFF;
+          border:1px solid #ececec;
+          width: 80px;
+          height: 80px;
+          margin: 0 1%;
+          flex-wrap:wrap;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
   }
@@ -217,10 +231,7 @@
       width: 70%;
       height: 260px;
       text-align: center;
-      .title{
-        margin-top: 10px;
-        font-size: 18px;
-      }
+
     }
   }
   .middle_tip_area{
