@@ -1,0 +1,33 @@
+<div class="whole_view" style="background: #fff">
+  <div class="top_area">
+    <div class="logo_area">
+      <%= image_tag 'page/index/logo46-46-deep.png' %>
+    </div>
+    <div class="nav_area">
+      <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item"><%= link_to '畅聊设计', page_topics_path %></li>
+        <li class="layui-nav-item"><%= link_to '设计师', page_designers_path %></li>
+        <li class="layui-nav-item layui-this"><%= link_to '品牌故事', page_stories_path %></li>
+        <li class="layui-nav-item"><%= link_to '产品案例', page_products_path %></li>
+        <li class="layui-nav-item"><%= link_to '首页', root_path %></li>
+      </ul>
+    </div>
+    <div class="sign_area">
+      <% if current_user %>
+          <span><%= image_tag current_user.avatar.url(:thumb) %></span>
+          <span class="in_out_span">
+            <%= link_to current_user.nick_name, edit_user_path(current_user) %>|
+            <%= link_to '注销', logout_path , class: 'sign-out'%>
+          </span>
+      <% else %>
+        <span class="in_out_span">
+          <%= link_to '登录', login_path, class: 'sign-in' %>|
+          <%= link_to '注册', signup_path, class: 'sign-up' %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+
+
+</div>

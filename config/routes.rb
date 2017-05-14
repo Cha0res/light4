@@ -2,6 +2,18 @@ Rails.application.routes.draw do
 
   root 'page#index'
 
+  get '/page/products' => 'page#products', :as => 'page_products'
+
+  get '/page/product_info' => 'page#product_info', :as => 'page_product_info'
+
+  get '/page/topics' => 'page#topics', :as => 'page_topics'
+
+  get '/page/designers' => 'page#designers', :as => 'page_designers'
+
+  get '/page/designer_info' => 'page#designer_info', :as => 'page_designer_info'
+
+  get '/page/stories' => 'page#stories', :as => 'page_stories'
+
   # admin后台管理员的路由
   get '/admin' => 'admins#index'
 

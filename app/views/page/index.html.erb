@@ -1,15 +1,15 @@
 <div class="whole_area">
   <div class="top_area">
     <div class="logo_area">
-      <%= image_tag "page/index/logo46-46-.png" %>
+      <%= image_tag 'page/index/logo46-46-.png' %>
     </div>
     <div class="nav_area">
       <ul class="layui-nav" lay-filter="">
-        <li class="layui-nav-item"><a href="javascript:;">畅聊设计</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">设计师</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">品牌故事</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">产品案例</a></li>
-        <li class="layui-nav-item layui-this"><a href="javascript:;">首页</a></li>
+        <li class="layui-nav-item"><%= link_to '畅聊设计', page_topics_path %></li>
+        <li class="layui-nav-item"><%= link_to '设计师', page_designers_path %></li>
+        <li class="layui-nav-item"><%= link_to '品牌故事', page_stories_path %></li>
+        <li class="layui-nav-item"><%= link_to '产品案例', page_products_path %></li>
+        <li class="layui-nav-item layui-this"><%= link_to '首页', root_path %></li>
       </ul>
     </div>
     <div class="sign_area">
@@ -34,7 +34,28 @@
 
   <div class="products_area">
     <div class="box">
-      <div class="title">产品案例</div>
+      <div class="title">
+        产品案例
+        <center><hr class="title_line"/></center>
+      </div>
+      <div class="example_box">
+        <% @index_page.products.each do |product| %>
+            <div class="item_box">
+              <div class="box_img_area">
+                <%= image_tag product.cover.url(:medium) %>
+              </div>
+              <div class="box_title_area">
+                <%= product.name %>
+              </div>
+              <div class="box_info_area">
+                <%= product.product_type %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+      <div class="more_area">
+        <%= link_to '更多>', page_products_path %>
+      </div>
     </div>
   </div>
   <div class="middle_tip_area">
@@ -42,7 +63,33 @@
   </div>
   <div class="designers_area">
     <div class="box">
-      <div class="title">设计师</div>
+      <div class="title">
+        设计师
+        <center><hr class="title_line"/></center>
+      </div>
+      <div class="example_box">
+        <% @index_page.designers.each do |designer| %>
+            <div class="item_box">
+              <div class="box_img_area">
+                <%= image_tag designer.avatar.url(:medium) %>
+              </div>
+              <div class="box_right">
+                <div class="box_title_area">
+                  <%= designer.name %>
+                </div>
+                <div class="box_type_area">
+                  服装设计师
+                </div>
+                <div class="box_info_area">
+                  <%= designer.email %>
+                </div>
+                <div class="more_area">
+                  <%= link_to '更多', page_designers_path, class: 'layui-btn layui-btn-primary' %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="middle_tip_area">
@@ -50,19 +97,32 @@
   </div>
   <div class="partners_area">
     <div class="box">
-      <div class="title">合作伙伴</div>
+      <div class="title">
+        合作伙伴
+        <center><hr class="title_line"/></center>
+      </div>
+      <% @index_page.partners.each do |partner| %>
+          <%= partner.name %>
+      <% end %>
     </div>
   </div>
   <div class="contact_area">
     <div class="box">
-      <div class="title">联系我们</div>
+      <div class="title">
+        联系我们
+        <center><hr class="title_line"/></center>
+      </div>
     </div>
+  </div>
+  <div class="layui-footer">
+    <div class="foot_link">
+      <%= link_to '首页', root_path %> | <%= link_to '产品案例', page_products_path %> | <%= link_to '品牌故事', page_stories_path %> | <%= link_to '设计师', page_designers_path %> | <%= link_to '畅聊设计', page_topics_path %>
+    </div>
+    <div class="auth_info">©2017 北京轻肆文化传播公司版权所有</div>
   </div>
 </div>
 
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
-        var element = layui.element();
-    });
+    layui.use('element');
 </script>

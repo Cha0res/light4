@@ -1,6 +1,10 @@
 class PageController < ApplicationController
   def index
-    @products = Product.order('updated_at DESC').limit(3)
+    @index_page = IndexPage.new
+  end
+
+  def designers
+    @designers = Designer.order('updated_at DESC').page params[:page]
   end
 
   def designer_info
@@ -21,5 +25,9 @@ class PageController < ApplicationController
 
   def topic_info
     @topic = Topic.find(params[:id])
+  end
+
+  def stories
+    @stories = Story.order('time_node DESC')
   end
 end

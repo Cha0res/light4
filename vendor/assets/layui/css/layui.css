@@ -398,11 +398,11 @@ a cite {
 .layui-btn-primary {
     border:1px solid #C9C9C9;
     background-color:#fff;
-    color:#555
+    color:#BCA46F
 }
 .layui-btn-primary:hover {
     border-color:#BCA46F;
-    color:#333
+    color:#BCA46F
 }
 .layui-btn-normal {
     background-color:#1E9FFF
