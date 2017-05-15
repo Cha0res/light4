@@ -41,20 +41,20 @@
         </div>
         <%= form_for :user , url: users_path, html: { class: 'layui-form layui-form-pane' } do |f|%>
             <div class="layui-form-item">
-              <label class="layui-form-label">邮</label>
+              <label class="layui-form-label"><%= image_tag 'login/attachment_512px.png' %></label>
               <div class="layui-input-inline">
                 <%= f.text_field :email, class:'layui-input', placeholder:'请输入电子邮箱' %>
               </div>
             </div>
 
             <div class="layui-form-item">
-              <label class="layui-form-label"><%= image_tag "login/shouji20-20-.png" %></label>
+              <label class="layui-form-label"><%= image_tag 'login/administrator_512px.png' %></label>
               <div class="layui-input-inline">
                 <%= f.text_field :name, class:'layui-input', placeholder:'请输入账号' %>
               </div>
             </div>
             <div class="layui-form-item">
-              <label class="layui-form-label"><%= image_tag "login/mima20-20.png" %></label>
+              <label class="layui-form-label"><%= image_tag 'login/password_512px.png' %></label>
               <div class="layui-input-inline">
                 <%= f.password_field :password, class:'layui-input', placeholder:'请输入密码' %>
               </div>
