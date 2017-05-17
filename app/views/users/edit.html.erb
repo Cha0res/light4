@@ -1,47 +1,98 @@
 <div class="whole_view">
-  <%= form_for @user, html: { multipart: true } do |f| %>
+  <div class="top_area">
+    <div class="logo_area">
+      <%= image_tag 'page/index/logo46-46-deep.png' %>
+    </div>
+    <div class="nav_area">
+      <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item"><%= link_to '畅聊设计', page_topics_path %></li>
+        <li class="layui-nav-item"><%= link_to '设计师', page_designers_path %></li>
+        <li class="layui-nav-item"><%= link_to '品牌故事', page_stories_path %></li>
+        <li class="layui-nav-item"><%= link_to '产品案例', page_products_path %></li>
+        <li class="layui-nav-item"><%= link_to '首页', root_path %></li>
+      </ul>
+    </div>
+    <div class="sign_area">
+      <% if current_user %>
+          <span><%= image_tag current_user.avatar.url(:thumb) %></span>
+          <span class="in_out_span">
+            <%= link_to current_user.nick_name, edit_user_path(current_user) %>|
+            <%= link_to '注销', logout_path , class: 'sign-out'%>
+          </span>
+      <% else %>
+        <span class="in_out_span">
+          <%= link_to '登录', login_path, class: 'sign-in' %>|
+          <%= link_to '注册', signup_path, class: 'sign-up' %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="middle_area">
+    <div class="left_area">
+      <%= image_tag 'login/tupian390-510.png', class: 'just_a_pic' %>
+    </div>
+    <div class="right_area">
+      <div class="dashed_box" style="height: 92%;top: 4%">
+      <%= form_for @user, html: { multipart: true, class: 'layui-form layui-form-pane', style:'margin-top:8px' } do |f| %>
 
-      <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2>
-              <%= pluralize(@user.errors.count, "error") %> prohibited
-              this article from being saved:
-            </h2>
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
+          <%= f.hidden_field :name %>
+
+          <div class="layui-form-item">
+            <div class="pic_select_area" onmouseover='$(".pic_cover_area").show()'  onmouseout='$(".pic_cover_area").hide()'>
+              <%= image_tag @user.avatar.url(:medium), class:'pic_display' %>
+              <div class="pic_cover_area" >
+                <div class="pic_choose_area" onclick='$(".pic_choose_button").trigger("click")' ></div>
+                <%= f.file_field :avatar, class:'pic_choose_button' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-inline">
+              <%= f.text_field :nick_name, class:'layui-input', placeholder:'请输入昵称' %>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-inline">
+              <%= f.text_field :mobile, class:'layui-input', placeholder:'请输入手机号' %>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+              <%= f.text_field :email, class:'layui-input', placeholder:'请输入邮箱' %>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+              <%= f.password_field :password, class:'layui-input', placeholder:'请输入密码'  %>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <%= f.submit '保存', class:'layui-btn', style:'margin-top:0;'%>
           </div>
       <% end %>
-
-      <%= f.hidden_field :name %>
-
-      <%= f.file_field :avatar %>
-
-      <p>
-        <%= f.label :nick_name %><br>
-        <%= f.text_field :nick_name %>
-      </p>
-
-      <p>
-        <%= f.label :mobile %><br>
-        <%= f.text_field :mobile %>
-      </p>
-
-      <p>
-        <%= f.label :email %><br>
-        <%= f.text_field :email %>
-      </p>
-
-      <p>
-        <%= f.label :密码 %><br>
-        <%= f.password_field :password %>
-      </p>
-
-      <p>
-        <%= f.submit '保存'%>
-      </p>
-
-  <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+    $(function() {
+        $('.pic_choose_button').change(function(e) {
+            var file = e.target.files[0];
+            preview(file);
+        })
+    });
+
+    function preview(file) {
+        var reader = new FileReader()
+        reader.onload = function(e) {
+            $('.pic_display').attr("src", e.target.result)
+        }
+        reader.readAsDataURL(file)
+    }
+</script>

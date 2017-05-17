@@ -31,6 +31,7 @@
       width:30px;
       height:30px;
       border-radius:50%;
+      background: gray;
     }
     .in_out_span{
       background-color: #fff;
@@ -95,6 +96,48 @@
           color: #BCA46F;
           border-bottom: 1px solid #BCA46F;
           cursor: default;
+        }
+      }
+      .pic_select_area{
+        margin-left: 86px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border:1px solid #ececec;
+        text-align: center;
+        background: #d7d7d7;
+        position: relative;
+        .pic_display{
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 50%;
+        }
+        .pic_cover_area{
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top:0;
+          left:0;
+          text-align: center;
+          line-height: 160px;
+          color: #FFFFFF;
+          border-radius: 50%;
+          overflow: hidden;
+          border:1px dashed #FFF;
+          background: rgba(130, 130, 130, 0.5);
+          display: none;
+          .pic_choose_area{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+
+            border-radius: 50%;
+            cursor: pointer;
+          }
+          .pic_choose_button{
+            display: none;
+          }
         }
       }
       .layui-form{
